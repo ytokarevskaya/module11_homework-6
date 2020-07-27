@@ -9,17 +9,19 @@ function counterElement(arr) {
   let zero = 0;
 
   for (let i = 0; i < arr.length; i++){
-    if (arr[i] == 0){
-      zero += 1;
-      continue;
-    } else {
-      if (arr[i] % 2 === 0) {
-        even += 1;
+    if (typeof arr[i] === 'number' && !isNaN(arr[i])) {
+      if (arr[i] === 0){
+        zero += 1;
         continue;
       } else {
-        odd += 1;
-        continue;
-      }
+        if (arr[i] % 2 === 0) {
+          even += 1;
+          continue;
+        } else {
+          odd += 1;
+          continue;
+        }
+      } 
     }
   }
 
@@ -29,3 +31,9 @@ function counterElement(arr) {
 }
 
 counterElement(arr)
+
+// Есть небольшая ошибка (та же самая, что была в 7 задании в прошлом модуле). Скопирую ещё раз комментарий с того задания:
+
+// Задача решена не совсем верно. Если в массиве есть значения не числового типа (строки, логические значения и т.д.), то они причисляются к нечетным значениям, хотя по условию они не должны учитываться вообще.
+
+// Выше в коде исправила на верный вариант

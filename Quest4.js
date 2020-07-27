@@ -15,3 +15,19 @@ arr.forEach((el, i) => {
     console.log(el)
   }, (i + 1) * 1000)
 })
+
+// Задание сделано верно, но проще было воспользоваться setInterval, чтобы не создавать дополнительно массив и не запускать setTimeout для каждого элемента. Если массив будет длинным, это будет сильно нагружать память. Ниже более оптимальный вариант решения:
+
+function logNumbers(begin, end) {
+  let current = begin;
+
+  let timerId = setInterval(function() {
+    console.log(current);
+    if (current == end) {
+      clearInterval(timerId);
+    }
+    current++;
+  }, 1000);
+}
+
+logNumbers(5, 15);
